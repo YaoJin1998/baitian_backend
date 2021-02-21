@@ -114,6 +114,17 @@
             <version>4.12</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.xmut</groupId>
+            <artifactId>service_base</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.xmut</groupId>
+            <artifactId>common_utils</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
     <!-- 项目打包时会将java目录中的*.xml文件也进行打包 -->

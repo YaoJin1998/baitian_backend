@@ -5,6 +5,7 @@
     <modules>
         <module>biantian_service</module>
         <module>common</module>
+        <module>baitianInfrastructure</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
