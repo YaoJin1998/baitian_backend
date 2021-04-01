@@ -10,4 +10,9 @@ public interface FileService {
 
     String uploadFileAvatar(MultipartFile file);
 
+    /*
+    * 阿里云oos文件删除
+    * */
+    void removeFile(String url);
+
 }

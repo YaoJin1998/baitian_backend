@@ -38,4 +38,11 @@ public class FileController {
         String url = fileService.uploadFileAvatar(file);
         return R.ok().data("url",url);
     }
+
+    //远程删除阿里云文件
+    @DeleteMapping("remove")
+    public R removeFile(@RequestBody String url){
+        fileService.removeFile(url);
+        return R.ok().message("文件删除成功");
+    }
 }

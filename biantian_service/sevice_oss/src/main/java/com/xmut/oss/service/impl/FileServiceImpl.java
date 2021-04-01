@@ -94,4 +94,30 @@ public class FileServiceImpl implements FileService {
         }
         return null;
     }
+
+/*
+* 阿里云oss删除
+* */
+    @Override
+    public void removeFile(String url) {
+        //读取配置信息
+        String endpoint = ossPropterties.getEndpoint();
+        String keyid = ossPropterties.getKeyid();
+        String keysecret = ossPropterties.getKeysecret();
+        String bucketname = ossPropterties.getBucketname();
+
+        // 创建OSSClient实例。
+        OSS ossClient = new OSSClientBuilder().build(endpoint, keyid, keysecret);
+
+        //删除文件
+        String host = "https://"+bucketname+"."+endpoint+"/";
+        String objectName = url.substring(host.length());
+        ossClient.deleteObject(bucketname, objectName);
+
+
+
+        // 关闭OSSClient。
+        ossClient.shutdown();
+
+    }
 }
