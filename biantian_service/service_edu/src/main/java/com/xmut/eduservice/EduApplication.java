@@ -11,7 +11,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @EnableSwagger2
 @EnableDiscoveryClient //nacos注册
-@EnableFeignClients
+@EnableFeignClients //服务调用注解
 @MapperScan("com.xmut.eduservice.mapper")
 public class EduApplication {
     public static void main(String[] args) {
