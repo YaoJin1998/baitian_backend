@@ -14,6 +14,7 @@
     <modules>
         <module>service_edu</module>
         <module>sevice_oss</module>
+        <module>service_vod</module>
     </modules>
 
     <dependencies>
@@ -36,6 +37,12 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
+        <!--服务容错-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

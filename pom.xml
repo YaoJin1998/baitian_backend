@@ -66,7 +66,7 @@
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>${mybatis-plus.version}</version>
+                <version>3.1.0</version>
             </dependency>
             <!-- velocity 模板引擎, Mybatis Plus 代码生成器需要 -->
             <dependency>
