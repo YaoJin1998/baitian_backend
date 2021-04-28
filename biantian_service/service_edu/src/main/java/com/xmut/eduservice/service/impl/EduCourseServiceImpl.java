@@ -9,9 +9,7 @@ import com.xmut.eduservice.feign.OssFileService;
 import com.xmut.eduservice.mapper.*;
 import com.xmut.eduservice.model.entity.*;
 import com.xmut.eduservice.model.entity.form.CourseInfoForm;
-import com.xmut.eduservice.model.entity.vo.CoursePublishVo;
-import com.xmut.eduservice.model.entity.vo.CourseQueryVo;
-import com.xmut.eduservice.model.entity.vo.CourseVo;
+import com.xmut.eduservice.model.entity.vo.*;
 import com.xmut.eduservice.service.CourseService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -196,5 +194,46 @@ public class EduCourseServiceImpl extends ServiceImpl<CourseMapper, Course> impl
         course.setGmtModified(new Date());
         course.setGmtCreate(new Date());
         return this.updateById(course);
+    }
+
+    @Override
+    public List<Course> webSelectList(WebCourseQueryVo webCourseQueryVo) {
+        QueryWrapper<Course> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("status",Course.COURSE_NORMAL);
+        if (!StringUtils.isEmpty(webCourseQueryVo.getSubjectParentId())){
+            queryWrapper.eq("subject_parent_id",webCourseQueryVo.getSubjectParentId());
+        }
+        if (!StringUtils.isEmpty(webCourseQueryVo.getSubjectId())){
+            queryWrapper.eq("subject_id",webCourseQueryVo.getSubjectId());
+        }
+        if (!StringUtils.isEmpty(webCourseQueryVo.getBuyCountSort())){
+            queryWrapper.orderByDesc("buy_count");
+        }
+        if (!StringUtils.isEmpty(webCourseQueryVo.getGmtCreateSort())){
+            queryWrapper.orderByDesc("gmt_create");
+        }
+        if (!StringUtils.isEmpty(webCourseQueryVo.getPriceSort())){
+            queryWrapper.orderByDesc("price");
+        }
+        return baseMapper.selectList(queryWrapper);
+    }
+
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public WebCourseVo selectWebCourseVoById(String id){
+        Course course = baseMapper.selectById(id);
+        course.setViewCount(course.getViewCount() + 1);
+        baseMapper.updateById(course);
+        return baseMapper.selectWebCourseVoById(id);
+    }
+
+    @Override
+    public List<Course> selectHotCourse() {
+        QueryWrapper<Course> queryWrapper = new QueryWrapper<>();
+        queryWrapper.orderByDesc("view_count");
+        queryWrapper.last("limit 8");
+
+        return baseMapper.selectList(queryWrapper);
     }
 }

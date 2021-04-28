@@ -82,4 +82,9 @@ public class EduSubjectServiceImpl extends ServiceImpl<EduSubjectMapper, EduSubj
         //4.封装二级分类
         return finalSubjectList;
     }
+
+    @Override
+    public List<EduSubject> nestedList() {
+        return baseMapper.selectNestedListByParentId("0");
+    }
 }

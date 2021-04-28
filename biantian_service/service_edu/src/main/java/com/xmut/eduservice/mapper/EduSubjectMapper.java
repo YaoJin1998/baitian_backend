@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.xmut.eduservice.model.entity.EduSubject;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
  * <p>
  * 课程科目 Mapper 接口
@@ -15,4 +17,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface EduSubjectMapper extends BaseMapper<EduSubject> {
 
+    List<EduSubject> selectNestedListByParentId(String s);
 }

@@ -5,10 +5,9 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.xmut.eduservice.model.entity.Course;
 import com.xmut.eduservice.model.entity.form.CourseInfoForm;
-import com.xmut.eduservice.model.entity.vo.CoursePublishVo;
-import com.xmut.eduservice.model.entity.vo.CourseQueryVo;
-import com.xmut.eduservice.model.entity.vo.CourseVo;
+import com.xmut.eduservice.model.entity.vo.*;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -36,4 +35,10 @@ public interface CourseService extends IService<Course> {
     CoursePublishVo getCoursePublishVoById(String id);
 
     boolean publishCourseById(String id);
+
+    List<Course> webSelectList(WebCourseQueryVo webCourseQueryVo);
+
+    WebCourseVo selectWebCourseVoById(String id);
+
+    List<Course> selectHotCourse();
 }

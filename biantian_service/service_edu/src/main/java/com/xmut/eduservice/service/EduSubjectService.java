@@ -24,4 +24,6 @@ public interface EduSubjectService extends IService<EduSubject> {
 
     List<OneSubject> getAllOneTwoSubject();
 
+    List<EduSubject> nestedList();
+
 }

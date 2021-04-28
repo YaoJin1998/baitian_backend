@@ -7,6 +7,8 @@ import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.vod.model.v20170321.DeleteVideoRequest;
 import com.aliyuncs.vod.model.v20170321.DeleteVideoResponse;
+import com.aliyuncs.vod.model.v20170321.GetVideoPlayAuthRequest;
+import com.aliyuncs.vod.model.v20170321.GetVideoPlayAuthResponse;
 import com.xmut.vod.service.VideoService;
 import com.xmut.vod.util.AliyunVodSDKUtils;
 import com.xmut.vod.util.VodProperties;
@@ -50,6 +52,20 @@ public class VideoServiceImpl implements VideoService {
         DeleteVideoRequest request = new DeleteVideoRequest();
         request.setVideoIds(videoId);
         client.getAcsResponse(request);
+
+    }
+
+    @Override
+    public String getPlayAuth(String videoSourceId) throws ClientException {
+        DefaultAcsClient client = AliyunVodSDKUtils.initVodClient(
+                vodProperties.getKeyid(),vodProperties.getKeysecret()
+        );
+
+        GetVideoPlayAuthRequest request = new GetVideoPlayAuthRequest();
+        request.setVideoId(videoSourceId);
+        GetVideoPlayAuthResponse response = client.getAcsResponse(request);
+
+        return response.getPlayAuth();
 
     }
 

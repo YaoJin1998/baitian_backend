@@ -49,5 +49,36 @@ LEFT JOIN edu_subject s2 ON c.subject_id = s2.id
 
 			WHERE c.id = #{id}
 	</select>
+	
+	<select id="selectWebCourseVoById" resultType="com.xmut.eduservice.model.entity.vo.WebCourseVo">
+		select
+		c.id,
+		c.title,
+		c.cover,
+		c.price as price,
+		c.lesson_num as lessonNum,
+		c.buy_count as buyCount,
+		c.view_count as viewCount,
+		cd.description,
+
+		t.id as teacherId,
+		t.name as teacherName,
+		t.intro,
+		t.avatar,
+
+		s1.id as subjectLevelOneId,
+		s1.title as subjectLevelOne,
+		s2.id as subjectLevelTwoId,
+		s2.title as subjectLevelTwo
+
+		from
+		course c
+		left join course_description cd on c.id = cd.id
+		left join edu_teacher t on c.teacher_id = t.id
+		left join edu_subject s1 on c.subject_parent_id = s1.id
+		left join edu_subject s2 on  c.subject_id = s2.id
+		where
+		c.id = #{id}
+	</select>
 
 </mapper>

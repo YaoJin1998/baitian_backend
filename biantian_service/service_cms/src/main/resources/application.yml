@@ -1,0 +1,31 @@
+server:
+  port: 8140
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: service-cms
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+    sentinel:
+      transport:
+        port: 8081
+        dashboard: localhost:8080
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/baitian?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 123
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+mybatis-plus:
+  mapper-locations: classpath:com/xmut/cms/mapper/xml/*.xml

@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.xmut.eduservice.model.entity.Course;
 import com.xmut.eduservice.model.entity.vo.CoursePublishVo;
 import com.xmut.eduservice.model.entity.vo.CourseVo;
+import com.xmut.eduservice.model.entity.vo.WebCourseVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -28,4 +29,5 @@ public interface CourseMapper extends BaseMapper<Course> {
 
     CoursePublishVo selectCoursePublishVoById(String id);
 
+    WebCourseVo selectWebCourseVoById(String courseId);
 }
