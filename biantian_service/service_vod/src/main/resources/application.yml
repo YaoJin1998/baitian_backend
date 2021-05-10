@@ -17,7 +17,7 @@ spring:
 
 aliyun:
   vod:
-    keyid: LTAI5tMjb73cKg4hfaQZRiYG
-    keysecret: ngzj5zBqXLQiQOxVSvCH81MOJFaief
+    keyid: 
+    keysecret: 
     templateGroupId: 111
     workflowId: 222
